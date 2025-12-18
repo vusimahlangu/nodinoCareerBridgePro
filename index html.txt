@@ -2917,5 +2917,7 @@
         // Initial save
         localStorage.setItem('careerBridgeState', JSON.stringify(appState));
     </script>
+<script src="consent-manager.js"></script>
+<script>const consentManager = new ConsentManager();</script>
 </body>
 </html>
