@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerBridge Pro - Professional Job Platform | Nodinopro (Pty) Ltd</title>
-    
+    <title>CareerBridge Pro - Professional Job Platform | Nodinopro (Pty) Ltd</title
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- PWA Requirements -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e40af">
@@ -1200,40 +1201,53 @@
                     </div>
                     
                     <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap;">
-                        <span style="font-size: 14px; color: var(--gray);">Trending:</span>
-                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Remote')">
-                            Remote
-                        </button>
-                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Software Developer')">
-                            Software Developer
-                        </button>
-                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Data Analyst')">
-                            Data Analyst
-                        </button>
-                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Project Manager')">
-                            Project Manager
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
-                    <div class="stat" style="text-align: center;">
-                        <h3 style="font-size: 36px; margin-bottom: 8px;">10,000+</h3>
-                        <p style="opacity: 0.8;">Active Jobs</p>
-                    </div>
-                    <div class="stat" style="text-align: center;">
-                        <h3 style="font-size: 36px; margin-bottom: 8px;">5,000+</h3>
-                        <p style="opacity: 0.8;">Companies</p>
-                    </div>
-                    <div class="stat" style="text-align: center;">
-                        <h3 style="font-size: 36px; margin-bottom: 8px;">50,000+</h3>
-                        <p style="opacity: 0.8;">Professionals</p>
-                    </div>
-                    <div class="stat" style="text-align: center;">
-                        <h3 style="font-size: 36px; margin-bottom: 8px;">98%</h3>
-                        <p style="opacity: 0.8;">Verified Profiles</p>
-                    </div>
-                </div>
+    <span style="font-size: 14px; color: var(--gray);">Trending:</span>
+    <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Remote')">
+        Remote
+    </button>
+    <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Software Developer')">
+        Software Developer
+    </button>
+    <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Data Analyst')">
+        Data Analyst
+    </button>
+    <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Project Manager')">
+        Project Manager
+    </button>
+</div>
+
+<!-- === WHATSAPP COMMUNITY CALL-TO-ACTION - ADDED HERE === -->
+<div style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 25px; border-radius: 12px; text-align: center; margin: 30px 0; box-shadow: var(--shadow);">
+    <h3 style="margin-bottom: 10px;"><i class="fab fa-whatsapp"></i> Join Our Free Job Network</h3>
+    <p style="margin-bottom: 20px; opacity: 0.9;">Be the first to get new job alerts, connect with professionals, and help build South Africa's next great career platform.</p>
+    <a href="https://chat.whatsapp.com/https://chat.whatsapp.com/KbLzjA2xZD7DEdQsQWIjJV" 
+       target="_blank" 
+       style="display: inline-block; background: white; color: #128C7E; padding: 14px 35px; border-radius: 50px; font-weight: bold; text-decoration: none; font-size: 18px;">
+        <i class="fab fa-whatsapp"></i> JOIN THE WHATSAPP GROUP
+    </a>
+    <p style="font-size: 14px; margin-top: 15px; opacity: 0.8;">Beta members get lifetime benefits.</p>
+</div>
+<!-- === END WHATSAPP SECTION === -->
+
+<div class="stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+    <div class="stat" style="text-align: center;">
+        <h3 style="font-size: 36px; margin-bottom: 8px;">10,000+</h3>
+        <p style="opacity: 0.8;">Active Jobs</p>
+    </div>
+    <div class="stat" style="text-align: center;">
+        <h3 style="font-size: 36px; margin-bottom: 8px;">5,000+</h3>
+        <p style="opacity: 0.8;">Companies</p>
+    </div>
+    <div class="stat" style="text-align: center;">
+        <h3 style="font-size: 36px; margin-bottom: 8px;">50,000+</h3>
+        <p style="opacity: 0.8;">Professionals</p>
+    </div>
+    <div class="stat" style="text-align: center;">
+        <h3 style="font-size: 36px; margin-bottom: 8px;">98%</h3>
+        <p style="opacity: 0.8;">Verified Profiles</p>
+    </div>
+</div>
+
             </div>
         </div>
     </section>
@@ -2921,3 +2935,4 @@
 <script>const consentManager = new ConsentManager();</script>
 </body>
 </html>
+
