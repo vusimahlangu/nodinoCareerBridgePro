@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerBridge Pro - South Africa's Premier Career Platform | Nodinopro (Pty) Ltd</title>
+    <title>CareerBridge Pro | South Africa's Premier Career Platform</title>
     
-    <!-- PWA Requirements -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#1e40af">
-    <link rel="icon" type="image/png" href="icon-192.png">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Connecting top South African talent with leading employers. AI-powered job matching, verified professionals, secure platform.">
+    <meta name="keywords" content="jobs South Africa, careers, employment, recruitment, AI job matching">
+    <meta name="author" content="CareerBridge Pro">
+    <meta property="og:title" content="CareerBridge Pro - Your Career Success Platform">
+    <meta property="og:description" content="Find your dream job or top talent with South Africa's most advanced career platform.">
+    <meta property="og:image" content="https://careerbridgepro.co.za/images/og-image.jpg">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,491 +20,914 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ====== COMPLETE STYLES ====== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        /* ====== CSS VARIABLES ====== */
         :root {
-            --primary: #1e40af;
-            --primary-dark: #1e3a8a;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
             --secondary: #f59e0b;
-            --accent: #10b981;
+            --secondary-dark: #d97706;
+            --success: #10b981;
+            --success-dark: #059669;
             --danger: #ef4444;
+            --warning: #f59e0b;
             --dark: #1e293b;
+            --dark-light: #334155;
             --light: #f8fafc;
             --gray: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --gray-light: #e2e8f0;
+            --border: #cbd5e1;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 0.375rem;
+            --radius: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
         }
-        
+
+        /* ====== RESET & BASE ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            background: var(--light);
-            min-height: 100vh;
+            background-color: var(--light);
+            overflow-x: hidden;
         }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Buttons */
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray);
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+        }
+
+        /* ====== TYPOGRAPHY ====== */
+        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; }
+        h2 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; }
+        h3 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; }
+        h4 { font-size: 1.25rem; font-weight: 600; line-height: 1.4; }
+        h5 { font-size: 1.125rem; font-weight: 500; line-height: 1.5; }
+        p { margin-bottom: 1rem; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+            .section-title { font-size: 2rem; }
+        }
+
+        /* ====== BUTTONS ====== */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 10px;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
             font-weight: 600;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
             cursor: pointer;
             border: 2px solid transparent;
-            transition: all 0.3s;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
+            white-space: nowrap;
+            user-select: none;
         }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            box-shadow: var(--shadow);
-        }
-        
-        .btn-primary:hover {
+
+        .btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
-        
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), #1e3a8a);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), var(--success-dark));
+            color: white;
+        }
+
         .btn-outline {
             background: transparent;
             color: var(--primary);
             border-color: var(--primary);
         }
-        
+
         .btn-outline:hover {
             background: var(--primary);
             color: white;
         }
-        
-        /* Navigation */
-        .navbar {
+
+        .btn-light {
             background: white;
-            box-shadow: var(--shadow);
-            position: sticky;
+            color: var(--primary);
+            border-color: var(--gray-light);
+        }
+
+        .btn-light:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+        }
+
+        .btn-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            padding: 0;
+            border-radius: 50%;
+        }
+
+        /* ====== NAVIGATION ====== */
+        .navbar {
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-light);
             z-index: 1000;
-            padding: 15px 0;
+            transition: all 0.3s ease;
         }
-        
-        .navbar .container {
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .nav-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            height: 4rem;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 0.75rem;
             text-decoration: none;
-            font-size: 28px;
             font-weight: 800;
+            font-size: 1.5rem;
             color: var(--dark);
         }
-        
+
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 10px;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
-            font-size: 20px;
+            font-weight: 700;
         }
-        
+
         .nav-links {
             display: flex;
-            gap: 30px;
+            align-items: center;
+            gap: 2rem;
+            margin-left: 2rem;
         }
-        
+
         .nav-link {
             text-decoration: none;
-            color: var(--gray);
+            color: var(--dark-light);
             font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s;
+            font-size: 0.875rem;
+            padding: 0.5rem;
+            position: relative;
+            transition: color 0.2s;
         }
-        
-        .nav-link:hover, .nav-link.active { color: var(--primary); }
-        
-        /* Hero Section */
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -0.25rem;
+            left: 0.5rem;
+            right: 0.5rem;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 1px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* ====== HERO SECTION ====== */
         .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-            color: white;
-            padding: 100px 0 80px;
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
             overflow: hidden;
         }
-        
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
         .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
             position: relative;
             z-index: 1;
+            text-align: center;
+            color: white;
+            max-width: 56rem;
+            margin: 0 auto;
         }
-        
-        .hero h1 {
-            font-size: 48px;
+
+        .hero-title {
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
         }
-        
-        .hero p {
-            font-size: 18px;
+
+        .hero-subtitle {
+            font-size: 1.25rem;
             opacity: 0.9;
-            margin-bottom: 40px;
+            margin-bottom: 2.5rem;
+            max-width: 40rem;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        /* Search Box */
-        .search-box {
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-xl);
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* ====== SEARCH SECTION ====== */
+        .search-section {
+            margin-top: -3rem;
+            position: relative;
+            z-index: 100;
+        }
+
+        .search-card {
             background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: var(--shadow-lg);
-            margin-bottom: 40px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            padding: 2rem;
         }
-        
+
         .search-grid {
             display: grid;
             grid-template-columns: 2fr 2fr 1.5fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
-        
+
         .search-group {
             position: relative;
         }
-        
-        .search-group i {
+
+        .search-icon {
             position: absolute;
-            left: 15px;
+            left: 1rem;
             top: 50%;
             transform: translateY(-50%);
             color: var(--gray);
+            pointer-events: none;
         }
-        
+
         .search-input, .search-select {
             width: 100%;
-            padding: 15px 15px 15px 45px;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            font-size: 16px;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            transition: all 0.2s;
         }
-        
-        /* WhatsApp CTA */
-        .whatsapp-cta {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 40px 0;
-            box-shadow: var(--shadow-lg);
+
+        .search-input:focus, .search-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
-        
-        .whatsapp-cta h3 {
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-        
-        .whatsapp-cta .btn-whatsapp {
-            background: white;
-            color: #128C7E;
-            font-size: 18px;
-            padding: 15px 40px;
-            margin-top: 20px;
-            display: inline-flex;
+
+        .search-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             align-items: center;
-            gap: 10px;
         }
-        
-        /* Stats */
+
+        .search-tag {
+            padding: 0.5rem 1rem;
+            background: var(--light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .search-tag:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ====== STATS ====== */
+        .stats {
+            background: var(--light);
+        }
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-top: 40px;
+            gap: 2rem;
+            margin-top: 3rem;
         }
-        
-        .stat {
+
+        .stat-card {
             text-align: center;
-        }
-        
-        .stat h3 {
-            font-size: 36px;
-            margin-bottom: 5px;
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 80px 0;
+            padding: 2rem;
             background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
         }
-        
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray);
-            margin-bottom: 50px;
-            font-size: 18px;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .feature-card {
-            background: var(--light);
-            padding: 40px 30px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
+
+        .stat-card:hover {
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
         }
-        
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 20px;
+
+        .stat-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, var(--primary-light), #dbeafe);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
-            color: white;
-            font-size: 32px;
+            margin: 0 auto 1rem;
+            color: var(--primary);
+            font-size: 1.25rem;
         }
-        
-        /* AI Section */
-        .ai-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--dark), #0f172a);
-            color: white;
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1;
         }
-        
-        .ai-features {
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        /* ====== FEATURES ====== */
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
-        
-        .ai-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s;
+
+        .feature-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-        
-        .ai-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
         }
-        
-        /* Jobs Section */
+
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* ====== JOBS SECTION ====== */
         .jobs-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background: var(--light);
         }
-        
+
+        .jobs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
         .jobs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            gap: 1.5rem;
         }
-        
+
         .job-card {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
             border: 1px solid var(--border);
+            transition: all 0.3s ease;
             position: relative;
         }
-        
+
         .job-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
             border-color: var(--primary);
         }
-        
+
         .job-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
             font-weight: 600;
         }
-        
-        .job-salary {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 18px;
-        }
-        
-        .job-meta {
+
+        .job-header {
             display: flex;
-            gap: 10px;
-            margin: 15px 0;
-            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
-        
-        .job-tag {
-            background: var(--light);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            color: var(--gray);
-        }
-        
-        .job-desc {
-            color: var(--gray);
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        /* Network Section */
-        .network-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .network-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid var(--border);
-        }
-        
-        .network-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary);
-        }
-        
-        .network-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            margin: 0 auto 15px;
+
+        .job-avatar {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
-            font-size: 24px;
+            font-weight: 700;
+            flex-shrink: 0;
         }
-        
-        /* Premium Section */
-        .premium-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
+
+        .job-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--dark);
         }
-        
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 80px 0 40px;
+
+        .job-company {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
         }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+
+        .job-location {
+            color: var(--gray);
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
         }
-        
-        .footer-col h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: white;
+
+        .job-salary {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 0.5rem;
         }
-        
-        .footer-col ul {
-            list-style: none;
+
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
         }
-        
-        .footer-col li {
-            margin-bottom: 12px;
-            color: #cbd5e1;
+
+        .job-tag {
+            background: var(--light);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            color: var(--gray);
         }
-        
-        .footer-col a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-col a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        .job-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #94a3b8;
-            font-size: 14px;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
         }
-        
-        .legal-links {
+
+        .job-posted {
+            color: var(--gray);
+            font-size: 0.75rem;
+        }
+
+        /* ====== NETWORK SECTION ====== */
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .network-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .network-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .network-avatar {
+            width: 5rem;
+            height: 5rem;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: 50%;
+            margin: 0 auto 1rem;
             display: flex;
-            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
-        
-        /* Modals */
+
+        .network-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .network-title {
+            color: var(--primary);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .network-info {
+            color: var(--gray);
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ====== TESTIMONIALS ====== */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .testimonial-slider {
+            max-width: 56rem;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-company {
+            opacity: 0.8;
+            font-size: 0.875rem;
+        }
+
+        /* ====== PRICING ====== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 1rem;
+            right: -2rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 2rem;
+            transform: rotate(45deg);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-feature {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pricing-feature i {
+            color: var(--success);
+        }
+
+        /* ====== FOOTER ====== */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-description {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        /* ====== MODALS ====== */
         .modal {
             display: none;
             position: fixed;
@@ -510,423 +935,761 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s;
+            padding: 1rem;
+            animation: fadeIn 0.3s ease;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
         .modal-content {
             background: white;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 32rem;
             max-height: 90vh;
             overflow-y: auto;
-            animation: slideUp 0.3s;
+            animation: slideUp 0.3s ease;
+            box-shadow: var(--shadow-xl);
         }
-        
+
         @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
+            from { transform: translateY(1rem); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-        
+
         .modal-header {
-            padding: 25px 30px;
+            padding: 1.5rem;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
         .modal-close {
             background: none;
             border: none;
-            font-size: 32px;
+            font-size: 1.5rem;
+            color: var(--gray);
             cursor: pointer;
-            color: var(--danger);
-            width: 40px;
-            height: 40px;
+            width: 2rem;
+            height: 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            transition: background 0.3s;
+            transition: all 0.2s;
         }
-        
+
         .modal-close:hover {
-            background: rgba(239, 68, 68, 0.1);
+            background: var(--light);
+            color: var(--danger);
         }
-        
+
         .modal-body {
-            padding: 30px;
+            padding: 1.5rem;
         }
-        
-        /* Form Elements */
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        /* ====== FORMS ====== */
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
-        
+
         .form-label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--dark);
+            font-size: 0.875rem;
         }
-        
+
         .form-control {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            font-size: 16px;
-            transition: all 0.3s;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            transition: all 0.2s;
         }
-        
+
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
-        
-        /* Responsive */
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-check-input {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .form-check-label {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        /* ====== RESPONSIVE DESIGN ====== */
         @media (max-width: 1024px) {
-            .search-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
-            .jobs-grid { grid-template-columns: repeat(2, 1fr); }
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-        
+
         @media (max-width: 768px) {
-            .nav-links, .auth-buttons { display: none; }
-            .hero h1 { font-size: 36px; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .jobs-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+                border-top: 1px solid var(--border);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .jobs-grid, .network-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ====== UTILITY CLASSES ====== */
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+        .text-success { color: var(--success); }
+        .text-gray { color: var(--gray); }
+        .bg-light { background: var(--light); }
+        .bg-white { background: white; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-8 { margin-top: 2rem; }
+        .p-4 { padding: 1rem; }
+        .p-8 { padding: 2rem; }
+        .rounded { border-radius: var(--radius); }
+        .rounded-lg { border-radius: var(--radius-lg); }
+        .shadow { box-shadow: var(--shadow); }
+        .shadow-lg { box-shadow: var(--shadow-lg); }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-4 { gap: 1rem; }
+        .hidden { display: none; }
+        .block { display: block; }
+        .w-full { width: 100%; }
+
+        /* ====== LOADING SPINNER ====== */
+        .spinner {
+            width: 2rem;
+            height: 2rem;
+            border: 3px solid var(--gray-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ====== TOAST NOTIFICATIONS ====== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            border-radius: var(--radius);
+            padding: 1rem 1.5rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 3000;
+            animation: slideInRight 0.3s ease;
+            max-width: 24rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .toast.success { border-left-color: var(--success); }
+        .toast.error { border-left-color: var(--danger); }
+        .toast.warning { border-left-color: var(--warning); }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .toast-icon {
+            font-size: 1.25rem;
+        }
+
+        .toast.success .toast-icon { color: var(--success); }
+        .toast.error .toast-icon { color: var(--danger); }
+        .toast.warning .toast-icon { color: var(--warning); }
+
+        .toast-message {
+            flex: 1;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            padding: 0.25rem;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#home" class="logo">
-                <div class="logo-icon">CB</div>
-                <span>CareerBridge<span style="color: var(--primary);">Pro</span></span>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bridge"></i>
+                </div>
+                <span>CareerBridge<span class="text-primary">Pro</span></span>
             </a>
             
-            <div class="nav-links">
-                <a href="#home" class="nav-link active">
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active" onclick="scrollToSection('home')">
                     <i class="fas fa-home"></i> Home
                 </a>
-                <a href="#jobs" class="nav-link">
+                <a href="#jobs" class="nav-link" onclick="scrollToSection('jobs')">
                     <i class="fas fa-briefcase"></i> Find Jobs
                 </a>
-                <a href="#" class="nav-link" onclick="openModal('employersModal')">
+                <a href="#employers" class="nav-link" onclick="scrollToSection('employers')">
                     <i class="fas fa-building"></i> Employers
                 </a>
-                <a href="#" class="nav-link" onclick="openModal('careerToolsModal')">
-                    <i class="fas fa-graduation-cap"></i> Career Tools
-                </a>
-                <a href="#" class="nav-link" onclick="openModal('networkModal')">
+                <a href="#network" class="nav-link" onclick="scrollToSection('network')">
                     <i class="fas fa-users"></i> Network
                 </a>
-                <a href="#premium" class="nav-link">
-                    <i class="fas fa-crown"></i> Premium
+                <a href="#pricing" class="nav-link" onclick="scrollToSection('pricing')">
+                    <i class="fas fa-tag"></i> Pricing
+                </a>
+                <a href="#" class="nav-link" onclick="openModal('careerToolsModal')">
+                    <i class="fas fa-tools"></i> Tools
                 </a>
             </div>
             
-            <div class="auth-buttons">
-                <button class="btn btn-outline" onclick="openModal('loginModal')">
-                    <i class="fas fa-sign-in-alt"></i> Sign In
-                </button>
-                <button class="btn btn-primary" onclick="openModal('registerModal')">
-                    <i class="fas fa-user-plus"></i> Register
+            <div class="flex items-center gap-4">
+                <div id="authButtons">
+                    <button class="btn btn-outline" onclick="openModal('loginModal')">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                    <button class="btn btn-primary" onclick="openModal('registerModal')">
+                        <i class="fas fa-user-plus"></i> Get Started
+                    </button>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1 class="hero-title">
+                Launch Your Career in 
+                <span style="color: #fbbf24;">South Africa</span>
+            </h1>
+            <p class="hero-subtitle">
+                AI-powered job matching connecting top talent with leading employers. 
+                Join 50,000+ professionals accelerating their careers.
+            </p>
+            
+            <div class="hero-badges">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-alt"></i> POPIA Compliant
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i> AI Matching
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-check-circle"></i> Verified Employers
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-video"></i> Video Interviews
+                </div>
+            </div>
+            
+            <div class="flex gap-4 justify-center">
+                <button class="btn btn-primary btn-lg" onclick="openModal('registerModal')">
+                    <i class="fas fa-rocket"></i> Start Free Trial
+                </button>
+                <button class="btn btn-light btn-lg" onclick="scrollToSection('features')">
+                    <i class="fas fa-play-circle"></i> See How It Works
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
         <div class="container">
-            <div class="hero-content">
-                <h1>Find Your <span style="color: #fbbf24;">Dream Job</span> in South Africa</h1>
-                <p>Powered by AI. Backed by Nodinopro (Pty) Ltd. Connecting professionals with top employers nationwide.</p>
-                
-                <!-- Search Box -->
-                <div class="search-box">
-                    <div class="search-grid">
-                        <div class="search-group">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Job title, skills, or keywords">
-                        </div>
-                        <div class="search-group">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <input type="text" class="search-input" placeholder="City, province or remote">
-                        </div>
-                        <div class="search-group">
-                            <i class="fas fa-filter"></i>
-                            <select class="search-select">
-                                <option value="">All Industries</option>
-                                <option value="it">IT & Technology</option>
-                                <option value="finance">Finance</option>
-                                <option value="healthcare">Healthcare</option>
-                                <option value="engineering">Engineering</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-primary" onclick="searchJobs()">
-                            <i class="fas fa-search"></i> Search Jobs
-                        </button>
+            <div class="search-card">
+                <div class="search-grid">
+                    <div class="search-group">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" 
+                               placeholder="Job title, skills, or keywords" 
+                               id="searchKeywords">
                     </div>
-                    
-                    <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
-                        <span style="font-size: 14px; color: var(--gray);">Trending:</span>
-                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Remote')">
-                            Remote
-                        </button>
-                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Software Developer')">
-                            Software Developer
-                        </button>
-                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Data Analyst')">
-                            Data Analyst
-                        </button>
-                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 14px;" onclick="searchTrending('Project Manager')">
-                            Project Manager
-                        </button>
+                    <div class="search-group">
+                        <i class="fas fa-map-marker-alt search-icon"></i>
+                        <select class="search-select" id="searchLocation">
+                            <option value="">All Locations</option>
+                            <option value="johannesburg">Johannesburg</option>
+                            <option value="cape-town">Cape Town</option>
+                            <option value="durban">Durban</option>
+                            <option value="pretoria">Pretoria</option>
+                            <option value="remote">Remote</option>
+                            <option value="hybrid">Hybrid</option>
+                        </select>
                     </div>
+                    <div class="search-group">
+                        <i class="fas fa-filter search-icon"></i>
+                        <select class="search-select" id="searchCategory">
+                            <option value="">All Industries</option>
+                            <option value="it">IT & Technology</option>
+                            <option value="finance">Finance & Banking</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="education">Education</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="performSearch()">
+                        <i class="fas fa-search"></i> Find Jobs
+                    </button>
                 </div>
                 
-                <!-- WhatsApp CTA -->
-                <div class="whatsapp-cta">
-                    <h3><i class="fab fa-whatsapp"></i> Join Our Free Job Network</h3>
-                    <p>Be the first to get new job alerts, connect with professionals, and help build South Africa's next great career platform.</p>
-                    <a href="https://chat.whatsapp.com/KbLzjA2xZD7DEdQsQWIvJV" 
-                       target="_blank" 
-                       class="btn btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> JOIN WHATSAPP GROUP
-                    </a>
-                    <p style="font-size: 14px; margin-top: 15px; opacity: 0.8;">Beta members get lifetime benefits.</p>
-                </div>
-                
-                <!-- Stats -->
-                <div class="stats-grid">
-                    <div class="stat">
-                        <h3>10,000+</h3>
-                        <p>Active Jobs</p>
-                    </div>
-                    <div class="stat">
-                        <h3>5,000+</h3>
-                        <p>Companies</p>
-                    </div>
-                    <div class="stat">
-                        <h3>50,000+</h3>
-                        <p>Professionals</p>
-                    </div>
-                    <div class="stat">
-                        <h3>98%</h3>
-                        <p>Verified Profiles</p>
-                    </div>
+                <div class="search-tags">
+                    <span class="text-gray">Trending:</span>
+                    <span class="search-tag" onclick="quickSearch('Software Developer')">
+                        Software Developer
+                    </span>
+                    <span class="search-tag" onclick="quickSearch('Data Analyst')">
+                        Data Analyst
+                    </span>
+                    <span class="search-tag" onclick="quickSearch('Project Manager')">
+                        Project Manager
+                    </span>
+                    <span class="search-tag" onclick="quickSearch('Remote Jobs')">
+                        Remote Jobs
+                    </span>
+                    <span class="search-tag" onclick="quickSearch('R50,000+')">
+                        R50,000+
+                    </span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Advanced Features -->
-    <section class="features">
+    <!-- Stats Section -->
+    <section class="section stats">
         <div class="container">
-            <h2 class="section-title">Advanced Platform Features</h2>
-            <p class="section-subtitle">Everything you need for career success in one place</p>
+            <h2 class="section-title">Trusted by South Africa's Top Talent</h2>
+            <p class="section-subtitle">
+                Join thousands of professionals and companies accelerating their success
+            </p>
             
-            <div class="feature-grid">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-number" id="jobCount">15,000+</div>
+                    <div class="stat-label">Active Jobs</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="stat-number">5,000+</div>
+                    <div class="stat-label">Verified Companies</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-number">50,000+</div>
+                    <div class="stat-label">Professionals</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">Why CareerBridge Pro?</h2>
+            <p class="section-subtitle">
+                Advanced features designed for the modern South African job market
+            </p>
+            
+            <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <h3>AI-Powered Job Matching</h3>
-                    <p>Smart algorithms match your skills with perfect opportunities using machine learning.</p>
+                    <h3 class="feature-title">AI Job Matching</h3>
+                    <p class="feature-description">
+                        Our intelligent algorithm analyzes your skills, experience, and preferences 
+                        to match you with perfect job opportunities.
+                    </p>
+                    <button class="btn btn-outline" onclick="openModal('aiModal')">
+                        Learn More
+                    </button>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-chart-network"></i>
+                        <i class="fas fa-video"></i>
                     </div>
-                    <h3>Industry Network Analytics</h3>
-                    <p>Connect with professionals and analyze market trends with network intelligence.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
-                    <h3>Smart Contract Verification</h3>
-                    <p>Automated verification of qualifications and professional credentials.</p>
+                    <h3 class="feature-title">Video Interviews</h3>
+                    <p class="feature-description">
+                        Conduct professional interviews directly on our secure platform. 
+                        No downloads required, accessible from any device.
+                    </p>
+                    <button class="btn btn-outline" onclick="openModal('interviewModal')">
+                        Try Demo
+                    </button>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Career Path Predictor</h3>
-                    <p>AI analyzes your skills to predict optimal career paths and salary progression.</p>
+                    <h3 class="feature-title">Skills Assessment</h3>
+                    <p class="feature-description">
+                        Comprehensive technical and soft skills testing with detailed 
+                        analytics and improvement recommendations.
+                    </p>
+                    <button class="btn btn-outline" onclick="openModal('assessmentModal')">
+                        Take Test
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- AI Section -->
-    <section class="ai-section">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">AI-Powered Career Assistant</h2>
-            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Get personalized career guidance from our AI assistant</p>
             
-            <div class="ai-features">
-                <div class="ai-card">
-                    <i class="fas fa-comment-alt" style="font-size: 32px; margin-bottom: 15px;"></i>
-                    <h4>Resume Optimization</h4>
-                    <p style="opacity: 0.8;">AI analyzes and improves your CV for better visibility</p>
+            <div class="features-grid mt-8">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">POPIA Compliant</h3>
+                    <p class="feature-description">
+                        Full compliance with South Africa's Protection of Personal 
+                        Information Act. Your data is secure with us.
+                    </p>
+                    <button class="btn btn-outline" onclick="openModal('privacyModal')">
+                        View Policy
+                    </button>
                 </div>
                 
-                <div class="ai-card">
-                    <i class="fas fa-video" style="font-size: 32px; margin-bottom: 15px;"></i>
-                    <h4>Interview Prep AI</h4>
-                    <p style="opacity: 0.8;">Practice interviews with AI that gives real-time feedback</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Real-time Alerts</h3>
+                    <p class="feature-description">
+                        Get instant notifications for new jobs, application updates, 
+                        and connection requests via email and SMS.
+                    </p>
+                    <button class="btn btn-outline" onclick="openModal('alertsModal')">
+                        Set Up Alerts
+                    </button>
                 </div>
                 
-                <div class="ai-card">
-                    <i class="fas fa-bullseye" style="font-size: 32px; margin-bottom: 15px;"></i>
-                    <h4>Skill Gap Analysis</h4>
-                    <p style="opacity: 0.8;">Identify skills needed for your target positions</p>
-                </div>
-                
-                <div class="ai-card">
-                    <i class="fas fa-network-wired" style="font-size: 32px; margin-bottom: 15px;"></i>
-                    <h4>Network Intelligence</h4>
-                    <p style="opacity: 0.8;">AI suggests key people to connect with in your industry</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="feature-title">Career Analytics</h3>
+                    <p class="feature-description">
+                        Track your job search progress, application success rates, 
+                        and market trends with detailed analytics dashboards.
+                    </p>
+                    <button class="btn btn-outline" onclick="openModal('analyticsModal')">
+                        View Demo
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Jobs -->
-    <section id="jobs" class="jobs-section">
+    <!-- Jobs Section -->
+    <section class="section jobs-section" id="jobs">
         <div class="container">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+            <div class="jobs-header">
                 <div>
                     <h2 class="section-title">Featured Job Opportunities</h2>
-                    <p class="section-subtitle">Handpicked opportunities matching current market trends</p>
+                    <p class="section-subtitle">
+                        Curated selection of top positions across South Africa
+                    </p>
                 </div>
-                <a href="#all-jobs" style="color: var(--primary); text-decoration: none; font-weight: 600;">
-                    View All Jobs <i class="fas fa-arrow-right"></i>
-                </a>
+                <button class="btn btn-outline" onclick="openModal('allJobsModal')">
+                    View All Jobs
+                </button>
             </div>
             
             <div class="jobs-grid" id="jobsContainer">
-                <!-- Jobs loaded dynamically -->
+                <!-- Jobs will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Network Section -->
+    <section class="section" id="network">
+        <div class="container">
+            <h2 class="section-title">Professional Network</h2>
+            <p class="section-subtitle">
+                Connect with industry professionals across South Africa
+            </p>
+            
+            <div class="network-grid" id="networkContainer">
+                <!-- Network cards will be loaded here -->
             </div>
             
-            <div style="text-align: center;">
-                <button class="btn btn-outline" onclick="loadMoreJobs()">
-                    <i class="fas fa-sync-alt"></i> Load More Jobs
+            <div class="text-center mt-8">
+                <button class="btn btn-primary" onclick="openModal('networkModal')">
+                    <i class="fas fa-users"></i> Explore Full Network
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Industry Network -->
-    <section class="features" style="background: var(--light);">
+    <!-- Testimonials -->
+    <section class="section testimonials">
         <div class="container">
-            <h2 class="section-title">Connect with Industry Leaders</h2>
-            <p class="section-subtitle">Network with professionals across South Africa's top industries</p>
+            <h2 class="section-title" style="color: white;">Success Stories</h2>
+            <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+                Hear from professionals who found their dream jobs
+            </p>
             
-            <div class="network-grid">
-                <div class="network-card">
-                    <div class="network-avatar">IT</div>
-                    <h4>Technology</h4>
-                    <p style="color: var(--gray); font-size: 14px;">8,500+ professionals</p>
-                    <button class="btn btn-outline" style="margin-top: 15px; padding: 8px 20px; font-size: 14px;">
-                        Connect
-                    </button>
-                </div>
-                
-                <div class="network-card">
-                    <div class="network-avatar">F</div>
-                    <h4>Finance</h4>
-                    <p style="color: var(--gray); font-size: 14px;">6,200+ professionals</p>
-                    <button class="btn btn-outline" style="margin-top: 15px; padding: 8px 20px; font-size: 14px;">
-                        Connect
-                    </button>
-                </div>
-                
-                <div class="network-card">
-                    <div class="network-avatar">H</div>
-                    <h4>Healthcare</h4>
-                    <p style="color: var(--gray); font-size: 14px;">4,800+ professionals</p>
-                    <button class="btn btn-outline" style="margin-top: 15px; padding: 8px 20px; font-size: 14px;">
-                        Connect
-                    </button>
-                </div>
-                
-                <div class="network-card">
-                    <div class="network-avatar">E</div>
-                    <h4>Engineering</h4>
-                    <p style="color: var(--gray); font-size: 14px;">5,500+ professionals</p>
-                    <button class="btn btn-outline" style="margin-top: 15px; padding: 8px 20px; font-size: 14px;">
-                        Connect
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Premium Section -->
-    <section class="premium-section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <div style="background: #fbbf24; color: var(--dark); padding: 10px 25px; border-radius: 25px; display: inline-block; font-weight: 600; margin-bottom: 20px;">
-                    <i class="fas fa-crown"></i> PREMIUM
-                </div>
-                <h2 class="section-title" style="color: white;">Unlock Advanced Features</h2>
-                <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;">
-                    Get ahead in your career with premium tools and insights
-                </p>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);">
-                    <h3 style="margin-bottom: 20px;"><i class="fas fa-bolt"></i> Premium Benefits</h3>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--accent);"></i> Unlimited job applications</li>
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--accent);"></i> Advanced AI career predictions</li>
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--accent);"></i> Priority support 24/7</li>
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check" style="color: var(--accent);"></i> Salary insights and benchmarks</li>
-                        <li><i class="fas fa-check" style="color: var(--accent);"></i> Exclusive networking events</li>
-                    </ul>
-                </div>
-                
-                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);">
-                    <h3 style="margin-bottom: 20px;"><i class="fas fa-chart-line"></i> Data Analytics</h3>
-                    <p style="opacity: 0.8; margin-bottom: 20px;">
-                        Access to premium market data and salary trends across industries
-                    </p>
-                    <div style="text-align: center;">
-                        <div style="font-size: 48px; font-weight: bold;">50%</div>
-                        <div style="font-size: 14px; opacity: 0.8;">More Interviews for Premium Users</div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "CareerBridge Pro helped me land a remote software engineering role 
+                        with a 40% salary increase. The AI matching was spot on!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">TM</div>
+                        <div>
+                            <div class="testimonial-name">Thabo Moloi</div>
+                            <div class="testimonial-company">Senior Developer at Standard Bank</div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">
+                Choose the plan that works for you. No hidden fees, no surprises.
+            </p>
             
-            <div style="text-align: center; margin-top: 40px;">
-                <button class="btn" style="background: #fbbf24; color: var(--dark); font-size: 18px; padding: 15px 40px;" onclick="openModal('premiumModal')">
-                    <i class="fas fa-crown"></i> Upgrade to Premium
-                </button>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Basic</h3>
+                        <div class="pricing-price">R0</div>
+                        <div class="pricing-period">Free forever</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> 3 Job Applications/month
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Basic Profile
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Email Support
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Job Search Access
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline w-full" onclick="selectPlan('basic')">
+                        Get Started
+                    </button>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Professional</h3>
+                        <div class="pricing-price">R299</div>
+                        <div class="pricing-period">per month</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Unlimited Applications
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> AI Job Matching
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Video Interviews
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Priority Support
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Skills Assessment
+                        </li>
+                    </ul>
+                    <button class="btn btn-primary w-full" onclick="selectPlan('professional')">
+                        Start Free Trial
+                    </button>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Enterprise</h3>
+                        <div class="pricing-price">Custom</div>
+                        <div class="pricing-period">Contact for quote</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Everything in Professional
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Custom Branding
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> API Access
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Dedicated Account Manager
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i> Advanced Analytics
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline w-full" onclick="openModal('enterpriseModal')">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="bg-white rounded-lg p-8 shadow-lg">
+                <div class="text-center">
+                    <h2 class="section-title">Ready to Transform Your Career?</h2>
+                    <p class="section-subtitle mb-8">
+                        Join thousands of successful professionals today. No credit card required.
+                    </p>
+                    <div class="flex gap-4 justify-center">
+                        <button class="btn btn-primary btn-lg" onclick="openModal('registerModal')">
+                            <i class="fas fa-rocket"></i> Start Free Trial
+                        </button>
+                        <button class="btn btn-outline btn-lg" onclick="openModal('demoModal')">
+                            <i class="fas fa-play-circle"></i> Watch Demo
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -935,590 +1698,1166 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="logo" style="color: white; margin-bottom: 20px; display: flex; align-items: center;">
-                        <div class="logo-icon" style="margin-right: 10px;">CB</div>
-                        <span>CareerBridge<span style="color: var(--accent);">Pro</span></span>
-                    </div>
-                    <p style="color: #cbd5e1; margin-bottom: 15px;">
-                        <strong>Nodinopro (Pty) Ltd</strong><br>
-                        <strong>CoReg:</strong> 2025/273525/07
+                <div>
+                    <a href="#" class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-bridge"></i>
+                        </div>
+                        <span>CareerBridge<span style="color: #10b981;">Pro</span></span>
+                    </a>
+                    <p class="footer-description">
+                        South Africa's premier career platform connecting top talent with 
+                        leading employers through AI-powered matching and innovative tools.
                     </p>
-                    <p style="color: #cbd5e1; margin-bottom: 15px; font-size: 14px;">
-                        <i class="fas fa-phone"></i> Cell: +27 82 9525 118<br>
-                        <i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp: +27 82 8010 124
-                    </p>
-                    <div style="display: flex; gap: 15px; margin-top: 20px;">
-                        <a href="https://chat.whatsapp.com/KbLzjA2xZD7DEdQsQWIvJV" target="_blank" style="color: #25D366;">
-                            <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
+                    <div class="social-links">
+                        <a href="#" class="social-link" onclick="openModal('socialModal')">
+                            <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="#" style="color: #1877F2;">
-                            <i class="fab fa-facebook" style="font-size: 24px;"></i>
+                        <a href="#" class="social-link" onclick="openModal('socialModal')">
+                            <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="#" style="color: #E4405F;">
-                            <i class="fab fa-instagram" style="font-size: 24px;"></i>
+                        <a href="#" class="social-link" onclick="openModal('socialModal')">
+                            <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" style="color: #000000;">
-                            <i class="fab fa-x-twitter" style="font-size: 24px;"></i>
+                        <a href="#" class="social-link" onclick="openModal('socialModal')">
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
                 
-                <div class="footer-col">
-                    <h3>Contact Details</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Stand 25807, Lotto Street</li>
-                        <li style="margin-left: 24px;">Ext. 25, eMbalenhle 2285</li>
-                        <li style="margin-left: 24px;">Mpumalanga, South Africa</li>
-                        <li><i class="fas fa-clock"></i> Mon-Fri: 8:00 - 16:00</li>
-                        <li><i class="fas fa-envelope"></i> info@careerbridgepro.co.za</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Job Seekers</h3>
-                    <ul>
-                        <li><a href="#jobs">Browse Jobs</a></li>
+                <div>
+                    <h4 class="footer-title">Job Seekers</h4>
+                    <ul class="footer-links">
+                        <li><a href="#jobs" onclick="scrollToSection('jobs')">Browse Jobs</a></li>
                         <li><a href="#" onclick="openModal('careerToolsModal')">Career Tools</a></li>
-                        <li><a href="#" onclick="openModal('networkModal')">Professional Network</a></li>
-                        <li><a href="#premium">Premium Features</a></li>
+                        <li><a href="#network" onclick="scrollToSection('network')">Professional Network</a></li>
                         <li><a href="#" onclick="openModal('assessmentModal')">Skills Assessment</a></li>
+                        <li><a href="#pricing" onclick="scrollToSection('pricing')">Premium Features</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-col">
-                    <h3>Employers</h3>
-                    <ul>
+                <div>
+                    <h4 class="footer-title">Employers</h4>
+                    <ul class="footer-links">
                         <li><a href="#" onclick="openModal('postJobModal')">Post a Job</a></li>
-                        <li><a href="#" onclick="openModal('pricingModal')">Pricing Plans</a></li>
+                        <li><a href="#pricing" onclick="scrollToSection('pricing')">Pricing Plans</a></li>
                         <li><a href="#" onclick="openModal('recruitmentModal')">Recruitment Solutions</a></li>
+                        <li><a href="#" onclick="openModal('employerDashboardModal')">Employer Dashboard</a></li>
                         <li><a href="#" onclick="openModal('interviewModal')">Interview Platform</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="openModal('aboutModal')">About Us</a></li>
+                        <li><a href="#" onclick="openModal('contactModal')">Contact</a></li>
+                        <li><a href="#" onclick="openModal('privacyModal')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="openModal('termsModal')">Terms of Service</a></li>
+                        <li><a href="#" onclick="openModal('cookiesModal')">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <div>
-                    © 2024 Nodinopro (Pty) Ltd. CoReg: 2025/273525/07. All rights reserved.
-                </div>
-                <div class="legal-links">
-                    <a href="#" onclick="openModal('termsModal')">Terms of Service</a>
-                    <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
-                    <a href="#" onclick="openModal('refundModal')">Refund Policy</a>
-                </div>
+                <p>© 2024 CareerBridge Pro. All rights reserved. POPIA Compliant.</p>
+                <p class="mt-2" style="font-size: 0.75rem; color: #64748b;">
+                    <i class="fas fa-shield-alt"></i> Your data is secure with us
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- ====== ALL MODALS ====== -->
-    
-    <!-- Career Tools Modal -->
-    <div class="modal" id="careerToolsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-tools"></i> Interactive Career Tools</h3>
-                <button class="modal-close" onclick="closeModal('careerToolsModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 20px;">
-                    <div class="tool-card" onclick="startAssessment()" style="text-align: center; padding: 20px; border: 2px solid var(--border); border-radius: 10px; cursor: pointer;">
-                        <i class="fas fa-brain" style="font-size: 40px; color: var(--primary); margin-bottom: 15px;"></i>
-                        <h4>Skills Assessment</h4>
-                        <p>Test your abilities with psychometric tests</p>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">Start Test</button>
-                    </div>
-                    
-                    <div class="tool-card" onclick="openTool('cvBuilder')" style="text-align: center; padding: 20px; border: 2px solid var(--border); border-radius: 10px; cursor: pointer;">
-                        <i class="fas fa-file-alt" style="font-size: 40px; color: var(--primary); margin-bottom: 15px;"></i>
-                        <h4>CV Builder</h4>
-                        <p>Create professional resumes in minutes</p>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">Try Now</button>
-                    </div>
-                </div>
-                
-                <div id="assessmentDemo" style="display: none; margin-top: 30px; padding: 20px; background: var(--light); border-radius: 10px;">
-                    <h4>Sample Psychometric Assessment</h4>
-                    <p id="questionText" style="margin: 15px 0;">When working on a team project, you prefer to:</p>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <button class="btn btn-outline" onclick="answerQuestion(1)">Take the leadership role</button>
-                        <button class="btn btn-outline" onclick="answerQuestion(2)">Support others with your expertise</button>
-                        <button class="btn btn-outline" onclick="answerQuestion(3)">Work independently on your part</button>
-                        <button class="btn btn-outline" onclick="answerQuestion(4)">Ensure everyone follows the plan</button>
-                    </div>
-                    <div id="resultArea" style="margin-top: 20px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- =========================================== -->
+    <!-- MODAL WINDOWS -->
+    <!-- =========================================== -->
 
-    <!-- Network Modal -->
-    <div class="modal" id="networkModal">
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><i class="fas fa-users"></i> Professional Network</h3>
-                <button class="modal-close" onclick="closeModal('networkModal')">&times;</button>
+                <h3 class="modal-title"><i class="fas fa-sign-in-alt"></i> Sign In</h3>
+                <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
             </div>
             <div class="modal-body">
-                <div style="margin-bottom: 20px;">
-                    <input type="text" id="networkSearch" placeholder="Search professionals by industry, skill, or location..." 
-                           style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; margin-bottom: 15px;">
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <button class="btn btn-outline active-filter" onclick="filterProfessionals('all')">All Industries</button>
-                        <button class="btn btn-outline" onclick="filterProfessionals('IT')">IT & Tech</button>
-                        <button class="btn btn-outline" onclick="filterProfessionals('Engineering')">Engineering</button>
-                        <button class="btn btn-outline" onclick="filterProfessionals('Healthcare')">Healthcare</button>
-                        <button class="btn btn-outline" onclick="filterProfessionals('General')">General Work</button>
-                        <button class="btn btn-outline" onclick="filterProfessionals('Finance')">Finance</button>
+                <form id="loginForm" onsubmit="return handleLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="loginEmail" required>
                     </div>
-                </div>
-                
-                <div id="networkResults" style="max-height: 300px; overflow-y: auto;">
-                    <!-- Dynamic content will load here -->
-                </div>
-                
-                <div style="text-align: center; margin-top: 20px;">
-                    <button class="btn btn-primary" onclick="loadMoreProfessionals()">
-                        <i class="fas fa-sync-alt"></i> Load More Professionals
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label">Remember me</label>
+                        </div>
+                        <a href="#" onclick="openModal('forgotPasswordModal')" style="font-size: 0.875rem;">
+                            Forgot password?
+                        </a>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </form>
+                <div class="text-center mt-4">
+                    <p class="text-gray">Don't have an account?</p>
+                    <button class="btn btn-outline mt-2" onclick="closeModal('loginModal'); openModal('registerModal')">
+                        Create Account
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Pricing Modal -->
-    <div class="modal" id="pricingModal">
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><i class="fas fa-tag"></i> Employer Pricing Plans</h3>
-                <button class="modal-close" onclick="closeModal('pricingModal')">&times;</button>
+                <h3 class="modal-title"><i class="fas fa-user-plus"></i> Create Account</h3>
+                <button class="modal-close" onclick="closeModal('registerModal')">&times;</button>
             </div>
             <div class="modal-body">
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
-                    <div style="border: 2px solid var(--border); border-radius: 12px; padding: 25px; text-align: center;">
-                        <h4>Basic Plan</h4>
-                        <div style="font-size: 32px; font-weight: bold; color: var(--primary); margin: 15px 0;">
-                            R499<span style="font-size: 16px; color: var(--gray);">/month</span>
-                        </div>
-                        <ul style="text-align: left; margin: 20px 0; padding-left: 20px; font-size: 14px;">
-                            <li>5 job postings per month</li>
-                            <li>100 candidate profile views</li>
-                            <li>Basic messaging system</li>
-                            <li>Email support</li>
-                        </ul>
-                        <button class="btn btn-outline" style="width: 100%;" onclick="selectPlan('basic')">Select Plan</button>
+                <form id="registerForm" onsubmit="return handleRegister(event)">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="registerName" required>
                     </div>
-                    
-                    <div style="border: 2px solid var(--primary); border-radius: 12px; padding: 25px; text-align: center; background: linear-gradient(135deg, rgba(30, 64, 175, 0.05), transparent);">
-                        <div style="background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 15px; font-size: 12px; font-weight: 600;">
-                            MOST POPULAR
-                        </div>
-                        <h4>Professional Plan</h4>
-                        <div style="font-size: 32px; font-weight: bold; color: var(--primary); margin: 15px 0;">
-                            R1,499<span style="font-size: 16px; color: var(--gray);">/month</span>
-                        </div>
-                        <ul style="text-align: left; margin: 20px 0; padding-left: 20px; font-size: 14px;">
-                            <li>Unlimited job postings</li>
-                            <li>Video interview platform</li>
-                            <li>Psychometric testing tools</li>
-                            <li>Priority customer support</li>
-                            <li>Market analytics dashboard</li>
-                        </ul>
-                        <button class="btn btn-primary" style="width: 100%;" onclick="selectPlan('professional')">Select Plan</button>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="registerEmail" required>
                     </div>
-                    
-                    <div style="border: 2px solid var(--border); border-radius: 12px; padding: 25px; text-align: center;">
-                        <h4>Enterprise Plan</h4>
-                        <div style="font-size: 32px; font-weight: bold; color: var(--primary); margin: 15px 0;">
-                            Custom Pricing
-                        </div>
-                        <ul style="text-align: left; margin: 20px 0; padding-left: 20px; font-size: 14px;">
-                            <li>Dedicated account manager</li>
-                            <li>Custom platform integrations</li>
-                            <li>Bulk hiring tools</li>
-                            <li>White-label solutions</li>
-                            <li>API access</li>
-                        </ul>
-                        <button class="btn btn-outline" style="width: 100%;" onclick="selectPlan('enterprise')">Contact Sales</button>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="registerPassword" required>
                     </div>
-                </div>
-                
-                <div style="background: var(--light); padding: 15px; border-radius: 8px; text-align: center;">
-                    <p><i class="fas fa-shield-alt" style="color: var(--primary);"></i> All plans include: Verified candidate profiles, POPIA compliance, secure messaging, and regular platform updates.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Employers Modal -->
-    <div class="modal" id="employersModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-building"></i> For Employers</h3>
-                <button class="modal-close" onclick="closeModal('employersModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h4 style="margin-bottom: 20px;">Hire South Africa's Top Talent</h4>
-                
-                <div style="background: var(--light); padding: 20px; border-radius: 10px; margin-bottom: 25px;">
-                    <h5 style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--accent);"></i> Premium Features for Employers:</h5>
-                    <ul style="margin: 15px 0; padding-left: 20px;">
-                        <li style="margin-bottom: 10px;">Post unlimited job listings</li>
-                        <li style="margin-bottom: 10px;">Access to verified, pre-screened candidates</li>
-                        <li style="margin-bottom: 10px;">Integrated video interview platform</li>
-                        <li style="margin-bottom: 10px;">Professional psychometric testing tools</li>
-                        <li style="margin-bottom: 10px;">Direct messaging with candidates</li>
-                        <li>Advanced analytics and hiring reports</li>
-                    </ul>
-                </div>
-                
-                <div style="text-align: center;">
-                    <button class="btn btn-primary" onclick="openModal('pricingModal')" style="margin-right: 10px;">
-                        <i class="fas fa-tag"></i> View Pricing Plans
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="registerConfirmPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Account Type</label>
+                        <select class="form-control" id="registerType" required>
+                            <option value="">Select account type</option>
+                            <option value="job_seeker">Job Seeker</option>
+                            <option value="employer">Employer</option>
+                            <option value="recruiter">Recruiter</option>
+                        </select>
+                    </div>
+                    <div class="form-check mb-4">
+                        <input type="checkbox" class="form-check-input" id="registerTerms" required>
+                        <label class="form-check-label">
+                            I agree to the <a href="#" onclick="openModal('termsModal')">Terms of Service</a> 
+                            and <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">
+                        <i class="fas fa-user-plus"></i> Create Account
                     </button>
-                    <button class="btn btn-outline" onclick="openModal('postJobModal')">
-                        <i class="fas fa-plus-circle"></i> Post a Job Now
-                    </button>
-                </div>
-                
-                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border);">
-                    <p style="font-size: 14px; color: var(--gray);">
-                        <i class="fas fa-info-circle" style="color: var(--primary);"></i>
-                        Need a custom solution? Contact our enterprise team at 
-                        <strong>enterprise@careerbridgepro.co.za</strong>
-                    </p>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Simple Modals -->
-    <div class="modal" id="termsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-file-contract"></i> Terms of Service</h3>
-                <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h4>Nodinopro (Pty) Ltd - Terms of Service</h4>
-                <p><strong>Company Registration:</strong> 2025/273525/07</p>
-                <p>Full terms and conditions will be available at platform launch. All services subject to South African law and POPIA compliance.</p>
-            </div>
-        </div>
-    </div>
+    <!-- Additional Modals would go here... -->
+    <!-- Job Detail Modal, Network Modal, Assessment Modal, etc. -->
 
-    <div class="modal" id="privacyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-shield-alt"></i> Privacy Policy</h3>
-                <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h4>POPIA Compliance</h4>
-                <p>CareerBridge Pro is fully compliant with the Protection of Personal Information Act (POPIA) of South Africa.</p>
-                <p>We protect your personal data and ensure transparent data processing with user consent.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="refundModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-exchange-alt"></i> Refund Policy</h3>
-                <button class="modal-close" onclick="closeModal('refundModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h4>Nodinopro (Pty) Ltd Refund Policy</h4>
-                <p>All payments are final and non-refundable as per company policy.</p>
-                <p>For billing inquiries, contact: accounts@careerbridgepro.co.za</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ====== JAVASCRIPT ====== -->
+    <!-- =========================================== -->
+    <!-- JAVASCRIPT -->
+    <!-- =========================================== -->
     <script>
-        // Core Application Functions
-        const appState = {
-            currentUser: null,
-            jobs: [],
-            professionals: [
-                { name: "Thabo M.", industry: "IT", role: "Senior Software Developer", experience: "7 years", location: "Johannesburg" },
-                { name: "Nomsa P.", industry: "Healthcare", role: "Nursing Manager", experience: "10 years", location: "Cape Town" },
-                { name: "David K.", industry: "Engineering", role: "Civil Engineer", experience: "12 years", location: "Durban" },
-                { name: "Lerato S.", industry: "General", role: "Construction Supervisor", experience: "8 years", location: "Pretoria" },
-                { name: "James B.", industry: "IT", role: "Data Analyst", experience: "5 years", location: "Remote" },
-                { name: "Sarah T.", industry: "Finance", role: "Financial Manager", experience: "9 years", location: "Sandton" }
-            ],
-            sampleJobs: [
-                {
-                    id: 1,
-                    title: "Senior Frontend Developer",
-                    company: "Tech Innovations SA",
-                    salary: "R85,000 - R120,000",
-                    location: "Johannesburg (Hybrid)",
-                    type: "Full-time",
-                    experience: "Senior",
-                    remote: true,
-                    category: "IT",
-                    description: "Lead frontend development for enterprise SaaS platform using React, TypeScript, and modern frameworks.",
-                    date: "2 hours ago",
-                    premium: true,
-                    applications: 45
-                },
-                {
-                    id: 2,
-                    title: "Data Scientist",
-                    company: "Financial Analytics Group",
-                    salary: "R95,000 - R140,000",
-                    location: "Cape Town",
-                    type: "Full-time",
-                    experience: "Senior",
-                    remote: false,
-                    category: "Finance",
-                    description: "Apply machine learning and statistical analysis to solve complex financial problems.",
-                    date: "5 hours ago",
-                    premium: true,
-                    applications: 32
-                },
-                {
-                    id: 3,
-                    title: "Healthcare IT Manager",
-                    company: "MediTech Solutions",
-                    salary: "R75,000 - R110,000",
-                    location: "Pretoria",
-                    type: "Full-time",
-                    experience: "Mid-Senior",
-                    remote: true,
-                    category: "Healthcare",
-                    description: "Manage IT systems for healthcare facilities and implement digital transformation projects.",
-                    date: "1 day ago",
-                    premium: false,
-                    applications: 28
-                }
-            ]
-        };
-
-        // Modal Functions
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-            if (modalId === 'networkModal') {
-                filterProfessionals('all');
+        // =============================================
+        // ENTERPRISE APPLICATION CORE
+        // =============================================
+        
+        class CareerBridgeApp {
+            constructor() {
+                this.state = {
+                    user: this.loadUser(),
+                    jobs: this.loadJobs(),
+                    professionals: this.loadProfessionals(),
+                    savedJobs: this.loadSavedJobs(),
+                    applications: this.loadApplications(),
+                    connections: this.loadConnections(),
+                    messages: [],
+                    notifications: [],
+                    filters: {
+                        search: '',
+                        location: '',
+                        category: '',
+                        remote: false,
+                        salary: ''
+                    }
+                };
+                
+                this.api = {
+                    baseUrl: 'https://api.careerbridgepro.co.za/v1',
+                    endpoints: {
+                        jobs: '/jobs',
+                        users: '/users',
+                        applications: '/applications',
+                        messages: '/messages',
+                        network: '/network',
+                        assessments: '/assessments'
+                    }
+                };
+                
+                this.init();
             }
-            if (modalId === 'careerToolsModal') {
-                document.getElementById('assessmentDemo').style.display = 'none';
-                document.getElementById('resultArea').innerHTML = '';
+            
+            // ====== INITIALIZATION ======
+            init() {
+                this.setupEventListeners();
+                this.renderJobs();
+                this.renderNetwork();
+                this.updateAuthUI();
+                this.setupRealTimeUpdates();
+                this.trackAnalytics();
+                
+                console.log('🚀 CareerBridge Pro Initialized');
+            }
+            
+            // ====== DATA MANAGEMENT ======
+            loadUser() {
+                try {
+                    const user = localStorage.getItem('careerbridge_user');
+                    return user ? JSON.parse(user) : null;
+                } catch (error) {
+                    console.error('Error loading user:', error);
+                    return null;
+                }
+            }
+            
+            loadJobs() {
+                // In production, this would fetch from API
+                // For demo, using static data
+                return [
+                    {
+                        id: 'JOB001',
+                        title: 'Senior Frontend Developer',
+                        company: 'Tech Innovations SA',
+                        location: 'Johannesburg (Hybrid)',
+                        salary: 'R85,000 - R120,000',
+                        type: 'Full-time',
+                        experience: '5+ years',
+                        category: 'IT',
+                        tags: ['React', 'TypeScript', 'Next.js'],
+                        description: 'Lead frontend development for enterprise SaaS platform.',
+                        posted: '2024-03-15',
+                        applications: 45,
+                        premium: true,
+                        featured: true
+                    },
+                    {
+                        id: 'JOB002',
+                        title: 'Data Scientist',
+                        company: 'Financial Analytics Group',
+                        location: 'Cape Town',
+                        salary: 'R95,000 - R140,000',
+                        type: 'Full-time',
+                        experience: '3+ years',
+                        category: 'Finance',
+                        tags: ['Python', 'Machine Learning', 'SQL'],
+                        description: 'Apply ML to solve complex financial problems.',
+                        posted: '2024-03-14',
+                        applications: 32,
+                        premium: true,
+                        featured: true
+                    },
+                    {
+                        id: 'JOB003',
+                        title: 'Healthcare IT Manager',
+                        company: 'MediTech Solutions',
+                        location: 'Pretoria',
+                        salary: 'R75,000 - R110,000',
+                        type: 'Full-time',
+                        experience: '7+ years',
+                        category: 'Healthcare',
+                        tags: ['IT Management', 'Healthcare'],
+                        description: 'Lead digital transformation in healthcare.',
+                        posted: '2024-03-13',
+                        applications: 28,
+                        premium: false,
+                        featured: false
+                    }
+                ];
+            }
+            
+            loadProfessionals() {
+                return [
+                    {
+                        id: 'PRO001',
+                        name: 'Thabo Moloi',
+                        title: 'Senior Software Developer',
+                        company: 'Standard Bank',
+                        experience: '7 years',
+                        location: 'Johannesburg',
+                        industry: 'IT',
+                        skills: ['React', 'Node.js', 'AWS'],
+                        education: 'BSc Computer Science - Wits',
+                        avatar: 'TM'
+                    },
+                    {
+                        id: 'PRO002',
+                        name: 'Nomsa Peters',
+                        title: 'Nursing Manager',
+                        company: 'Netcare',
+                        experience: '10 years',
+                        location: 'Cape Town',
+                        industry: 'Healthcare',
+                        skills: ['Healthcare Management', 'Patient Care'],
+                        education: 'MSc Nursing - UCT',
+                        avatar: 'NP'
+                    }
+                ];
+            }
+            
+            loadSavedJobs() {
+                try {
+                    return JSON.parse(localStorage.getItem('saved_jobs')) || [];
+                } catch {
+                    return [];
+                }
+            }
+            
+            loadApplications() {
+                try {
+                    return JSON.parse(localStorage.getItem('applications')) || [];
+                } catch {
+                    return [];
+                }
+            }
+            
+            loadConnections() {
+                try {
+                    return JSON.parse(localStorage.getItem('connections')) || [];
+                } catch {
+                    return [];
+                }
+            }
+            
+            // ====== RENDERING ======
+            renderJobs() {
+                const container = document.getElementById('jobsContainer');
+                if (!container) return;
+                
+                const filteredJobs = this.filterJobs();
+                
+                container.innerHTML = filteredJobs.map(job => `
+                    <div class="job-card" data-job-id="${job.id}">
+                        ${job.premium ? '<div class="job-badge">PREMIUM</div>' : ''}
+                        <div class="job-header">
+                            <div class="job-avatar">${job.company.substring(0, 2)}</div>
+                            <div style="flex: 1;">
+                                <h3 class="job-title">${job.title}</h3>
+                                <p class="job-company">${job.company}</p>
+                                <p class="job-location">
+                                    <i class="fas fa-map-marker-alt"></i> ${job.location}
+                                </p>
+                            </div>
+                            <div class="job-salary">${job.salary}</div>
+                        </div>
+                        
+                        <div class="job-tags">
+                            <span class="job-tag">${job.type}</span>
+                            <span class="job-tag">${job.experience}</span>
+                            <span class="job-tag">${job.category}</span>
+                            ${job.tags.map(tag => `<span class="job-tag">${tag}</span>`).join('')}
+                        </div>
+                        
+                        <p class="job-desc">${job.description}</p>
+                        
+                        <div class="job-footer">
+                            <div>
+                                <div class="job-posted">Posted ${this.formatDate(job.posted)}</div>
+                                <div style="font-size: 12px; color: var(--accent);">
+                                    <i class="fas fa-users"></i> ${job.applications} applications
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-icon ${this.state.savedJobs.includes(job.id) ? 'saved' : ''}"
+                                        onclick="app.toggleSaveJob('${job.id}')"
+                                        title="${this.state.savedJobs.includes(job.id) ? 'Unsave' : 'Save'}">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                                <button class="btn btn-primary" onclick="app.viewJob('${job.id}')">
+                                    Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Update job count
+                const jobCountEl = document.getElementById('jobCount');
+                if (jobCountEl) {
+                    jobCountEl.textContent = `${filteredJobs.length}+`;
+                }
+            }
+            
+            renderNetwork() {
+                const container = document.getElementById('networkContainer');
+                if (!container) return;
+                
+                container.innerHTML = this.state.professionals.map(prof => `
+                    <div class="network-card">
+                        <div class="network-avatar">${prof.avatar}</div>
+                        <h4 class="network-name">${prof.name}</h4>
+                        <p class="network-title">${prof.title}</p>
+                        <p class="network-info">
+                            <i class="fas fa-building"></i> ${prof.company}<br>
+                            <i class="fas fa-map-marker-alt"></i> ${prof.location}
+                        </p>
+                        <button class="btn btn-outline w-full" onclick="app.viewProfile('${prof.id}')">
+                            <i class="fas fa-eye"></i> View Profile
+                        </button>
+                    </div>
+                `).join('');
+            }
+            
+            // ====== JOB FUNCTIONS ======
+            filterJobs() {
+                let jobs = [...this.state.jobs];
+                
+                if (this.state.filters.search) {
+                    const search = this.state.filters.search.toLowerCase();
+                    jobs = jobs.filter(job => 
+                        job.title.toLowerCase().includes(search) ||
+                        job.company.toLowerCase().includes(search) ||
+                        job.tags.some(tag => tag.toLowerCase().includes(search))
+                    );
+                }
+                
+                if (this.state.filters.location) {
+                    jobs = jobs.filter(job => 
+                        job.location.toLowerCase().includes(this.state.filters.location.toLowerCase())
+                    );
+                }
+                
+                if (this.state.filters.category) {
+                    jobs = jobs.filter(job => job.category === this.state.filters.category);
+                }
+                
+                return jobs;
+            }
+            
+            performSearch() {
+                const keywords = document.getElementById('searchKeywords')?.value || '';
+                const location = document.getElementById('searchLocation')?.value || '';
+                const category = document.getElementById('searchCategory')?.value || '';
+                
+                this.state.filters = { search: keywords, location, category };
+                this.renderJobs();
+                
+                // Scroll to jobs section
+                document.getElementById('jobs')?.scrollIntoView({ behavior: 'smooth' });
+                
+                this.showToast(`Found ${this.filterJobs().length} jobs matching your criteria`, 'success');
+            }
+            
+            quickSearch(term) {
+                const searchInput = document.getElementById('searchKeywords');
+                if (searchInput) {
+                    searchInput.value = term;
+                    this.state.filters.search = term;
+                    this.renderJobs();
+                    
+                    document.getElementById('jobs')?.scrollIntoView({ behavior: 'smooth' });
+                    
+                    this.showToast(`Searching for "${term}" jobs...`, 'info');
+                }
+            }
+            
+            viewJob(jobId) {
+                const job = this.state.jobs.find(j => j.id === jobId);
+                if (!job) return;
+                
+                if (!this.state.user) {
+                    this.showToast('Please sign in to apply for jobs', 'warning');
+                    openModal('loginModal');
+                    return;
+                }
+                
+                if (this.state.applications.includes(jobId)) {
+                    this.showToast('You have already applied for this position', 'info');
+                    return;
+                }
+                
+                // Show application modal
+                this.showApplicationModal(job);
+            }
+            
+            toggleSaveJob(jobId) {
+                const index = this.state.savedJobs.indexOf(jobId);
+                if (index > -1) {
+                    this.state.savedJobs.splice(index, 1);
+                    this.showToast('Job removed from saved', 'info');
+                } else {
+                    this.state.savedJobs.push(jobId);
+                    this.showToast('Job saved successfully', 'success');
+                }
+                
+                localStorage.setItem('saved_jobs', JSON.stringify(this.state.savedJobs));
+                this.renderJobs();
+            }
+            
+            // ====== AUTHENTICATION ======
+            async handleLogin(event) {
+                event.preventDefault();
+                
+                const email = document.getElementById('loginEmail')?.value;
+                const password = document.getElementById('loginPassword')?.value;
+                
+                if (!email || !password) {
+                    this.showToast('Please fill in all fields', 'error');
+                    return false;
+                }
+                
+                // Show loading
+                const submitBtn = event.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<div class="spinner"></div>';
+                submitBtn.disabled = true;
+                
+                try {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    // For demo, accept any email/password
+                    this.state.user = {
+                        id: 'USER001',
+                        name: email.split('@')[0],
+                        email: email,
+                        type: 'job_seeker',
+                        joined: new Date().toISOString(),
+                        premium: false
+                    };
+                    
+                    localStorage.setItem('careerbridge_user', JSON.stringify(this.state.user));
+                    
+                    this.showToast('Welcome back!', 'success');
+                    this.updateAuthUI();
+                    closeModal('loginModal');
+                    
+                } catch (error) {
+                    this.showToast('Login failed. Please try again.', 'error');
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+                
+                return false;
+            }
+            
+            async handleRegister(event) {
+                event.preventDefault();
+                
+                const name = document.getElementById('registerName')?.value;
+                const email = document.getElementById('registerEmail')?.value;
+                const password = document.getElementById('registerPassword')?.value;
+                const confirmPassword = document.getElementById('registerConfirmPassword')?.value;
+                const type = document.getElementById('registerType')?.value;
+                
+                if (!name || !email || !password || !confirmPassword || !type) {
+                    this.showToast('Please fill in all fields', 'error');
+                    return false;
+                }
+                
+                if (password !== confirmPassword) {
+                    this.showToast('Passwords do not match', 'error');
+                    return false;
+                }
+                
+                // Show loading
+                const submitBtn = event.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<div class="spinner"></div>';
+                submitBtn.disabled = true;
+                
+                try {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    this.state.user = {
+                        id: 'USER' + Date.now(),
+                        name: name,
+                        email: email,
+                        type: type,
+                        joined: new Date().toISOString(),
+                        premium: false,
+                        profileComplete: false
+                    };
+                    
+                    localStorage.setItem('careerbridge_user', JSON.stringify(this.state.user));
+                    
+                    this.showToast(`Welcome ${name}! Account created successfully.`, 'success');
+                    this.updateAuthUI();
+                    closeModal('registerModal');
+                    
+                    // Show profile completion modal
+                    setTimeout(() => {
+                        this.showProfileCompletion();
+                    }, 1000);
+                    
+                } catch (error) {
+                    this.showToast('Registration failed. Please try again.', 'error');
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+                
+                return false;
+            }
+            
+            logout() {
+                this.state.user = null;
+                localStorage.removeItem('careerbridge_user');
+                this.updateAuthUI();
+                this.showToast('Logged out successfully', 'info');
+            }
+            
+            updateAuthUI() {
+                const authButtons = document.getElementById('authButtons');
+                if (!authButtons) return;
+                
+                if (this.state.user) {
+                    authButtons.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 2rem; height: 2rem; background: linear-gradient(135deg, var(--primary), var(--success)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                    ${this.state.user.name.substring(0, 2).toUpperCase()}
+                                </div>
+                                <span style="font-weight: 500;">${this.state.user.name.split(' ')[0]}</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="app.logout()">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    authButtons.innerHTML = `
+                        <button class="btn btn-outline" onclick="openModal('loginModal')">
+                            <i class="fas fa-sign-in-alt"></i> Sign In
+                        </button>
+                        <button class="btn btn-primary" onclick="openModal('registerModal')">
+                            <i class="fas fa-user-plus"></i> Get Started
+                        </button>
+                    `;
+                }
+            }
+            
+            // ====== UTILITIES ======
+            formatDate(dateString) {
+                const date = new Date(dateString);
+                const now = new Date();
+                const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+                
+                if (diffDays === 0) return 'Today';
+                if (diffDays === 1) return 'Yesterday';
+                if (diffDays < 7) return `${diffDays} days ago`;
+                if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+                return date.toLocaleDateString('en-ZA');
+            }
+            
+            showToast(message, type = 'info') {
+                // Remove existing toast
+                const existingToast = document.querySelector('.toast');
+                if (existingToast) existingToast.remove();
+                
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.innerHTML = `
+                    <div class="toast-icon">
+                        ${type === 'success' ? '<i class="fas fa-check-circle"></i>' :
+                          type === 'error' ? '<i class="fas fa-exclamation-circle"></i>' :
+                          type === 'warning' ? '<i class="fas fa-exclamation-triangle"></i>' :
+                          '<i class="fas fa-info-circle"></i>'}
+                    </div>
+                    <div class="toast-message">${message}</div>
+                    <button class="toast-close" onclick="this.parentElement.remove()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                document.body.appendChild(toast);
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    if (toast.parentElement) {
+                        toast.remove();
+                    }
+                }, 5000);
+            }
+            
+            showProfileCompletion() {
+                // Create profile completion modal
+                const modalContent = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title"><i class="fas fa-user-check"></i> Complete Your Profile</h3>
+                            <button class="modal-close" onclick="closeModal('profileCompleteModal')">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p style="margin-bottom: 1.5rem;">Complete your profile to get better job matches:</p>
+                            <div style="background: var(--light); padding: 1.5rem; border-radius: var(--radius);">
+                                <h4 style="margin-bottom: 1rem;">Profile Progress</h4>
+                                <div style="background: var(--border); height: 8px; border-radius: 4px; margin-bottom: 1rem;">
+                                    <div style="width: 30%; height: 100%; background: var(--primary); border-radius: 4px;"></div>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <button class="btn btn-outline" onclick="app.completeProfileSection('skills')">
+                                        <i class="fas fa-code"></i> Add Skills
+                                    </button>
+                                    <button class="btn btn-outline" onclick="app.completeProfileSection('experience')">
+                                        <i class="fas fa-briefcase"></i> Add Experience
+                                    </button>
+                                    <button class="btn btn-outline" onclick="app.completeProfileSection('education')">
+                                        <i class="fas fa-graduation-cap"></i> Add Education
+                                    </button>
+                                    <button class="btn btn-outline" onclick="app.completeProfileSection('portfolio')">
+                                        <i class="fas fa-folder"></i> Add Portfolio
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button class="btn btn-primary" onclick="closeModal('profileCompleteModal')">
+                                    I'll do this later
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                let modal = document.getElementById('profileCompleteModal');
+                if (!modal) {
+                    modal = document.createElement('div');
+                    modal.id = 'profileCompleteModal';
+                    modal.className = 'modal';
+                    modal.innerHTML = modalContent;
+                    document.body.appendChild(modal);
+                }
+                
+                openModal('profileCompleteModal');
+            }
+            
+            completeProfileSection(section) {
+                this.showToast(`${section.charAt(0).toUpperCase() + section.slice(1)} section opened`, 'info');
+                closeModal('profileCompleteModal');
+                // In production, would open the specific section form
+            }
+            
+            showApplicationModal(job) {
+                const modalContent = `
+                    <div class="modal-content" style="max-width: 500px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title"><i class="fas fa-paper-plane"></i> Apply for ${job.title}</h3>
+                            <button class="modal-close" onclick="closeModal('applicationModal')">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="text-align: center; margin-bottom: 1.5rem;">
+                                <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, var(--primary), var(--success)); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: bold;">
+                                    ${job.company.substring(0, 2)}
+                                </div>
+                                <h4>${job.title}</h4>
+                                <p style="color: var(--gray);">${job.company} • ${job.location}</p>
+                            </div>
+                            
+                            <form onsubmit="return app.submitApplication('${job.id}', event)">
+                                <div class="form-group">
+                                    <label class="form-label">Cover Letter (Optional)</label>
+                                    <textarea class="form-control" rows="4" placeholder="Tell the employer why you're a good fit..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Resume</label>
+                                    <div style="border: 2px dashed var(--border); border-radius: var(--radius); padding: 2rem; text-align: center;">
+                                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--gray); margin-bottom: 0.5rem;"></i>
+                                        <p style="color: var(--gray); font-size: 0.875rem;">Drop your resume here or click to browse</p>
+                                        <input type="file" accept=".pdf,.doc,.docx" style="display: none;">
+                                        <button type="button" class="btn btn-outline mt-2" onclick="this.previousElementSibling.click()">
+                                            <i class="fas fa-file-upload"></i> Choose File
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-check mb-4">
+                                    <input type="checkbox" class="form-check-input" id="applicationTerms" required>
+                                    <label class="form-check-label">
+                                        I confirm that the information provided is accurate
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-full">
+                                    <i class="fas fa-paper-plane"></i> Submit Application
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                `;
+                
+                let modal = document.getElementById('applicationModal');
+                if (!modal) {
+                    modal = document.createElement('div');
+                    modal.id = 'applicationModal';
+                    modal.className = 'modal';
+                    modal.innerHTML = modalContent;
+                    document.body.appendChild(modal);
+                } else {
+                    modal.innerHTML = modalContent;
+                }
+                
+                openModal('applicationModal');
+            }
+            
+            submitApplication(jobId, event) {
+                event.preventDefault();
+                
+                this.state.applications.push(jobId);
+                localStorage.setItem('applications', JSON.stringify(this.state.applications));
+                
+                // Update job application count
+                const job = this.state.jobs.find(j => j.id === jobId);
+                if (job) {
+                    job.applications += 1;
+                }
+                
+                this.showToast('Application submitted successfully!', 'success');
+                closeModal('applicationModal');
+                this.renderJobs();
+                
+                return false;
+            }
+            
+            selectPlan(plan) {
+                if (!this.state.user) {
+                    this.showToast('Please sign in to select a plan', 'warning');
+                    openModal('loginModal');
+                    return;
+                }
+                
+                const plans = {
+                    basic: { name: 'Basic', price: 0 },
+                    professional: { name: 'Professional', price: 299 },
+                    enterprise: { name: 'Enterprise', price: 'Custom' }
+                };
+                
+                const selected = plans[plan];
+                
+                if (plan === 'professional') {
+                    // Show payment modal
+                    this.showPaymentModal(selected);
+                } else if (plan === 'basic') {
+                    this.state.user.premium = false;
+                    localStorage.setItem('careerbridge_user', JSON.stringify(this.state.user));
+                    this.showToast('Basic plan activated', 'success');
+                } else {
+                    openModal('enterpriseModal');
+                }
+            }
+            
+            showPaymentModal(plan) {
+                const modalContent = `
+                    <div class="modal-content" style="max-width: 500px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title"><i class="fas fa-credit-card"></i> Upgrade to ${plan.name}</h3>
+                            <button class="modal-close" onclick="closeModal('paymentModal')">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="text-align: center; margin-bottom: 1.5rem;">
+                                <div style="font-size: 2.5rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;">
+                                    R${plan.price}<span style="font-size: 1rem; color: var(--gray);">/month</span>
+                                </div>
+                                <p style="color: var(--gray);">7-day free trial, then R${plan.price}/month</p>
+                            </div>
+                            
+                            <div style="background: var(--light); padding: 1rem; border-radius: var(--radius); margin-bottom: 1.5rem;">
+                                <h4 style="margin-bottom: 0.5rem;">Included Features:</h4>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>Unlimited job applications</li>
+                                    <li>AI job matching</li>
+                                    <li>Video interview platform</li>
+                                    <li>Priority support</li>
+                                    <li>Skills assessment</li>
+                                </ul>
+                            </div>
+                            
+                            <form onsubmit="return app.processPayment(event)">
+                                <div class="form-group">
+                                    <label class="form-label">Card Number</label>
+                                    <input type="text" class="form-control" placeholder="1234 5678 9012 3456" required>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <div class="form-group">
+                                        <label class="form-label">Expiry Date</label>
+                                        <input type="text" class="form-control" placeholder="MM/YY" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">CVC</label>
+                                        <input type="text" class="form-control" placeholder="123" required>
+                                    </div>
+                                </div>
+                                <div class="form-check mb-4">
+                                    <input type="checkbox" class="form-check-input" id="saveCard" checked>
+                                    <label class="form-check-label">
+                                        Save card for future payments
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-full">
+                                    <i class="fas fa-lock"></i> Start Free Trial
+                                </button>
+                            </form>
+                            
+                            <p style="text-align: center; margin-top: 1rem; font-size: 0.75rem; color: var(--gray);">
+                                <i class="fas fa-lock"></i> Secure payment powered by PayFast
+                            </p>
+                        </div>
+                    </div>
+                `;
+                
+                let modal = document.getElementById('paymentModal');
+                if (!modal) {
+                    modal = document.createElement('div');
+                    modal.id = 'paymentModal';
+                    modal.className = 'modal';
+                    modal.innerHTML = modalContent;
+                    document.body.appendChild(modal);
+                }
+                
+                openModal('paymentModal');
+            }
+            
+            processPayment(event) {
+                event.preventDefault();
+                
+                // Show loading
+                const submitBtn = event.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<div class="spinner"></div>';
+                submitBtn.disabled = true;
+                
+                // Simulate payment processing
+                setTimeout(() => {
+                    this.state.user.premium = true;
+                    localStorage.setItem('careerbridge_user', JSON.stringify(this.state.user));
+                    
+                    this.showToast('Premium plan activated! Welcome to CareerBridge Pro Professional.', 'success');
+                    closeModal('paymentModal');
+                    this.updateAuthUI();
+                    
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
+                
+                return false;
+            }
+            
+            viewProfile(profileId) {
+                const profile = this.state.professionals.find(p => p.id === profileId);
+                if (!profile) return;
+                
+                openModal('profileViewModal');
+                document.getElementById('profileViewModal').innerHTML = `
+                    <div class="modal-content" style="max-width: 600px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title"><i class="fas fa-user"></i> ${profile.name}</h3>
+                            <button class="modal-close" onclick="closeModal('profileViewModal')">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="text-align: center; margin-bottom: 2rem;">
+                                <div class="network-avatar-large" style="margin: 0 auto 1rem;">
+                                    ${profile.avatar}
+                                </div>
+                                <h3>${profile.name}</h3>
+                                <p style="color: var(--primary); font-weight: 500;">${profile.title} at ${profile.company}</p>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                                <div>
+                                    <h5><i class="fas fa-graduation-cap"></i> Education</h5>
+                                    <p>${profile.education}</p>
+                                    
+                                    <h5 style="margin-top: 1.5rem;"><i class="fas fa-briefcase"></i> Experience</h5>
+                                    <p>${profile.experience} in ${profile.industry}</p>
+                                </div>
+                                
+                                <div>
+                                    <h5><i class="fas fa-star"></i> Skills</h5>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+                                        ${profile.skills.map(skill => `
+                                            <span style="background: var(--light); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.75rem;">
+                                                ${skill}
+                                            </span>
+                                        `).join('')}
+                                    </div>
+                                    
+                                    <h5 style="margin-top: 1.5rem;"><i class="fas fa-map-marker-alt"></i> Location</h5>
+                                    <p>${profile.location}</p>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                                <button class="btn btn-primary" style="flex: 1;" onclick="app.connectWith('${profile.id}')">
+                                    <i class="fas fa-user-plus"></i> Connect
+                                </button>
+                                <button class="btn btn-outline" style="flex: 1;" onclick="app.sendMessage('${profile.id}')">
+                                    <i class="fas fa-envelope"></i> Message
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            connectWith(profileId) {
+                if (!this.state.user) {
+                    this.showToast('Please sign in to connect', 'warning');
+                    openModal('loginModal');
+                    return;
+                }
+                
+                if (!this.state.connections.includes(profileId)) {
+                    this.state.connections.push(profileId);
+                    localStorage.setItem('connections', JSON.stringify(this.state.connections));
+                    
+                    this.showToast('Connection request sent!', 'success');
+                } else {
+                    this.showToast('Already connected', 'info');
+                }
+            }
+            
+            sendMessage(profileId) {
+                if (!this.state.user) {
+                    this.showToast('Please sign in to send messages', 'warning');
+                    openModal('loginModal');
+                    return;
+                }
+                
+                openModal('messageModal');
+                // In production, would open chat interface
+            }
+            
+            // ====== EVENT LISTENERS ======
+            setupEventListeners() {
+                // Scroll effect on navbar
+                window.addEventListener('scroll', () => {
+                    const navbar = document.getElementById('navbar');
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+                
+                // Close modals on outside click
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('modal')) {
+                        e.target.style.display = 'none';
+                    }
+                });
+                
+                // Escape key closes modals
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        document.querySelectorAll('.modal').forEach(modal => {
+                            if (modal.style.display === 'flex') {
+                                modal.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+                
+                // Form submissions
+                const loginForm = document.getElementById('loginForm');
+                if (loginForm) {
+                    loginForm.addEventListener('submit', (e) => this.handleLogin(e));
+                }
+                
+                const registerForm = document.getElementById('registerForm');
+                if (registerForm) {
+                    registerForm.addEventListener('submit', (e) => this.handleRegister(e));
+                }
+            }
+            
+            setupRealTimeUpdates() {
+                // Simulate real-time updates
+                setInterval(() => {
+                    // Update job counts randomly
+                    const jobCountEl = document.getElementById('jobCount');
+                    if (jobCountEl) {
+                        const current = parseInt(jobCountEl.textContent);
+                        const change = Math.floor(Math.random() * 10) - 2;
+                        const newCount = Math.max(15000, current + change);
+                        jobCountEl.textContent = `${newCount}+`;
+                    }
+                }, 30000);
+            }
+            
+            trackAnalytics() {
+                // Track page view
+                console.log('📊 Analytics: Page viewed');
+                
+                // In production, would send to Google Analytics/Plausible
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_view');
+                }
+            }
+        }
+        
+        // ====== GLOBAL FUNCTIONS ======
+        let app;
+        
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             }
         }
         
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
         
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
-        }
-
-        // Job Functions
-        function loadJobs() {
-            const container = document.getElementById('jobsContainer');
-            if (!container) return;
-            
-            container.innerHTML = '';
-            appState.sampleJobs.forEach(job => {
-                const jobCard = document.createElement('div');
-                jobCard.className = 'job-card';
-                jobCard.innerHTML = `
-                    ${job.premium ? '<div class="job-badge">PREMIUM</div>' : ''}
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                        <div>
-                            <h3 style="font-size: 18px; margin-bottom: 5px;">${job.title}</h3>
-                            <p style="color: var(--gray); font-size: 14px;">${job.company}</p>
-                        </div>
-                        <div class="job-salary">${job.salary}</div>
-                    </div>
-                    
-                    <div class="job-meta">
-                        <span class="job-tag">${job.type}</span>
-                        <span class="job-tag">${job.experience}</span>
-                        <span class="job-tag">${job.location}</span>
-                        ${job.remote ? '<span class="job-tag" style="background:#d1fae5;color:#059669;">Remote</span>' : ''}
-                    </div>
-                    
-                    <p class="job-desc">${job.description}</p>
-                    
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                        <div>
-                            <span style="color: var(--gray); font-size: 12px;">Posted ${job.date}</span>
-                            <div style="font-size: 12px; color: var(--accent); margin-top: 4px;">
-                                <i class="fas fa-users"></i> ${job.applications} applications
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                            <button class="btn btn-outline" style="padding: 8px 15px;" onclick="saveJob(${job.id})">
-                                <i class="fas fa-bookmark"></i>
-                            </button>
-                            <button class="btn btn-primary" style="padding: 8px 20px;" onclick="applyForJob(${job.id})">
-                                Apply Now
-                            </button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(jobCard);
-            });
-        }
-
-        function searchJobs() {
-            alert('Searching jobs...\n\nAdvanced search functionality launching soon!');
-        }
-
-        function searchTrending(term) {
-            alert(`Searching for "${term}" jobs...\n\nFull search with filters coming in next update.`);
-        }
-
-        function loadMoreJobs() {
-            alert('Loading more job opportunities...\n\nDatabase of 10,000+ jobs being populated daily.');
-        }
-
-        function applyForJob(jobId) {
-            const job = appState.sampleJobs.find(j => j.id === jobId);
-            alert(`Application submitted for:\n\n${job.title}\nat ${job.company}\n\nGood luck!`);
-        }
-
-        function saveJob(jobId) {
-            alert('Job saved to your favorites!\n\nAccess saved jobs from your profile dashboard.');
-        }
-
-        // Career Tools Functions
-        function startAssessment() {
-            document.getElementById('assessmentDemo').style.display = 'block';
-            document.getElementById('resultArea').innerHTML = '';
-        }
-
-        function answerQuestion(choice) {
-            const results = [
-                "Leadership Style: You're a natural leader who enjoys guiding teams and taking responsibility.",
-                "Collaborative Style: You excel at supporting team members with your specific expertise and knowledge.",
-                "Independent Style: You prefer focused, independent work on specific tasks and deliverables.",
-                "Organizational Style: You thrive on structure, processes, and ensuring plans are followed precisely."
-            ];
-            
-            document.getElementById('resultArea').innerHTML = `
-                <div style="background: #d1fae5; color: #065f46; padding: 20px; border-radius: 10px; margin-top: 20px;">
-                    <h5 style="margin-bottom: 10px;"><i class="fas fa-chart-line"></i> Assessment Result</h5>
-                    <p style="margin-bottom: 10px;">${results[choice-1]}</p>
-                    <p style="font-size: 12px; opacity: 0.8;">
-                        <i class="fas fa-info-circle"></i> 
-                        This is a sample question. The full assessment includes 50 questions across 5 categories: 
-                        Problem Solving, Teamwork, Leadership, Communication, and Technical Skills.
-                    </p>
-                </div>
-            `;
-        }
-
-        function openTool(toolName) {
-            alert(`Opening ${toolName.replace(/([A-Z])/g, ' $1').trim()}...\n\nBeta feature - Full interactive version launching Q1 2025!`);
-        }
-
-        // Network Functions
-        function filterProfessionals(industry) {
-            const resultsDiv = document.getElementById('networkResults');
-            if (!resultsDiv) return;
-            
-            // Update active filter buttons
-            document.querySelectorAll('.active-filter').forEach(btn => btn.classList.remove('active-filter'));
-            event.target.classList.add('active-filter');
-            
-            const filtered = industry === 'all' 
-                ? appState.professionals 
-                : appState.professionals.filter(p => p.industry === industry);
-            
-            resultsDiv.innerHTML = '';
-            
-            filtered.forEach(prof => {
-                resultsDiv.innerHTML += `
-                    <div style="border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 15px;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div>
-                                <strong style="font-size: 16px;">${prof.name}</strong>
-                                <div style="color: var(--primary); font-size: 14px; margin: 5px 0;">${prof.role}</div>
-                                <div style="color: var(--gray); font-size: 12px;">
-                                    <i class="fas fa-briefcase"></i> ${prof.experience} experience
-                                    <span style="margin: 0 10px;">•</span>
-                                    <i class="fas fa-map-marker-alt"></i> ${prof.location}
-                                </div>
-                            </div>
-                            <span style="background: var(--light); color: var(--primary); padding: 5px 12px; border-radius: 15px; font-size: 12px; font-weight: 600;">
-                                ${prof.industry}
-                            </span>
-                        </div>
-                        <button class="btn btn-outline" style="width: 100%; margin-top: 15px; padding: 10px;" onclick="connectWith('${prof.name}')">
-                            <i class="fas fa-user-plus"></i> Connect with ${prof.name.split(' ')[0]}
-                        </button>
-                    </div>
-                `;
-            });
-            
-            if (filtered.length === 0) {
-                resultsDiv.innerHTML = `
-                    <div style="text-align: center; padding: 30px; color: var(--gray);">
-                        <i class="fas fa-users" style="font-size: 40px; margin-bottom: 15px; opacity: 0.5;"></i>
-                        <p>No professionals found in this category yet.</p>
-                        <p style="font-size: 14px; margin-top: 10px;">Check back soon as our network grows daily!</p>
-                    </div>
-                `;
-            }
-        }
-
-        function connectWith(name) {
-            alert(`Connection request sent to ${name}!\n\nIn the full version, this will:\n1. Send a professional introduction\n2. Allow direct messaging\n3. Enable profile viewing\n4. Facilitate career networking`);
-        }
-
-        function loadMoreProfessionals() {
-            alert("Loading more professionals...\n\nOur network is growing daily with new professionals joining from across South Africa.");
-        }
-
-        // Pricing Functions
-        function selectPlan(plan) {
-            const planDetails = {
-                basic: { name: "Basic Plan", price: "R499/month", features: ["5 job postings", "100 candidate views"] },
-                professional: { name: "Professional Plan", price: "R1,499/month", features: ["Unlimited postings", "Video interviews"] },
-                enterprise: { name: "Enterprise Plan", price: "Custom Pricing", features: ["Dedicated manager", "Custom solutions"] }
-            };
-            
-            const detail = planDetails[plan];
-            alert(`Selected: ${detail.name}\nPrice: ${detail.price}\n\nFeatures:\n• ${detail.features.join('\n• ')}\n\nNext: Payment integration with PayFast\n(Beta feature - Payment processing launching soon)`);
-        }
-
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            loadJobs();
-            filterProfessionals('all');
-            
-            // Make all navigation links work
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const navbarHeight = document.getElementById('navbar').offsetHeight;
+                window.scrollTo({
+                    top: section.offsetTop - navbarHeight,
+                    behavior: 'smooth'
                 });
-            });
-        });
-
-        // WhatsApp redirect confirmation
-        document.querySelector('a[href*="whatsapp.com"]').addEventListener('click', function(e) {
-            if (!confirm('You are being redirected to WhatsApp to join our CareerBridge Pro community. Continue?')) {
-                e.preventDefault();
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('active');
             }
+        }
+        
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+            }
+        }
+        
+        // ====== INITIALIZE APP ======
+        document.addEventListener('DOMContentLoaded', () => {
+            app = new CareerBridgeApp();
+            
+            // Make functions globally available
+            window.app = app;
+            window.openModal = openModal;
+            window.closeModal = closeModal;
+            window.scrollToSection = scrollToSection;
+            window.toggleMobileMenu = toggleMobileMenu;
+            window.performSearch = () => app.performSearch();
+            window.quickSearch = (term) => app.quickSearch(term);
+            window.selectPlan = (plan) => app.selectPlan(plan);
         });
     </script>
 </body>
