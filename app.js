@@ -185,7 +185,7 @@ app.post("/login", async (req, res) => {
       }
     }
     // For demo: return OTP in response if SendGrid isn't configured or for convenience
-    res.json({ otp });
+    // Only return OTP in response for dev/testing if (!process.env.SENDGRID_API_KEY || process.env.RETURN_OTP === "true") { // In development (no SendGrid) OR if RETURN_OTP is explicitly true, return the OTP res.json({ otp }); } else { // In production with SendGrid configured, do not return the OTP in the response res.json({ message: "OTP sent" }); }
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "db error" });
